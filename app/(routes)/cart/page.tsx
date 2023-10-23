@@ -1,14 +1,16 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 import Container from "@/components/ui/container";
 import useCart from "@/hooks/use-cart";
-import { useEffect, useState } from "react";
+
 import CartItem from "./_components/cart-item";
 import Summary from "./_components/summary";
 
-type Props = {};
+export const revalidate = 0;
 
-const CartPage = (props: Props) => {
+const CartPage = () => {
   const [isMounted, setIsMounted] = useState(false);
   const cart = useCart();
 
@@ -28,7 +30,7 @@ const CartPage = (props: Props) => {
           <div className="mt-12 lg:grid lg:grid-cols-12 lg:items-start gap-x-12">
             <div className="lg:col-span-7">
               {cart.items.length === 0 && (
-                <p className="text-neutral-500 ">No items added to cart</p>
+                <p className="text-neutral-500">No items added to cart.</p>
               )}
               <ul>
                 {cart.items.map(item => (
